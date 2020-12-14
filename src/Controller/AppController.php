@@ -72,6 +72,7 @@ class AppController extends Controller
         $this->request->addDetector('api', ['param' => 'api', 'value' => 'api']);
         //load api component
         if ($this->request->is('api')) {
+            echo 1;die;
             $this->loadComponent('Api');
         }
         parent::beforeFilter($event);
