@@ -72,6 +72,8 @@ class ApiComponent extends Component
 
         $this->setMetaData();
 
+        $this->setCorsHeaders();
+
         // serialize for json output if not already done
         if (!isset($this->Controller->viewVars['_serialize'])) {
             $this->Controller->set('_serialize', array_keys($this->Controller->viewVars));
@@ -117,5 +119,16 @@ class ApiComponent extends Component
             }
             $this->Controller->set(compact('meta'));
         }
+    }
+    private function setCorsHeaders()
+    {
+        $this->Controller->response = $this->Controller->response->cors($this->Controller->request)
+            ->allowOrigin(['*'])
+            ->allowMethods(['*'])
+            ->allowHeaders(['x-xsrf-token', 'Origin', 'Content-Type', 'X-Auth-Token'])
+            ->allowCredentials(['true'])
+            ->exposeHeaders(['Link'])
+            ->maxAge(300)
+            ->build();
     }
 }
