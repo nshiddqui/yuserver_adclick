@@ -7,7 +7,7 @@
         <?= $this->DataTables->render('Links') ?>
     </div>
 </div>
-<?php $this->Html->scriptStart(['block' => true]);
+<?php $this->Html->scriptStart(['block' => 'script']);
 echo `var needToLoad = false;
         document.addEventListener("visibilitychange", event => {
             if (document.visibilityState == "visible") {
