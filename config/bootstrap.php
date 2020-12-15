@@ -111,8 +111,6 @@ mb_internal_encoding(Configure::read('App.encoding'));
  */
 ini_set('intl.default_locale', Configure::read('App.defaultLocale'));
 
-header('Access-Control-Allow-Origin: *');
-
 /*
  * Register application error and exception handlers.
  */
