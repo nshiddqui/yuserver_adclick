@@ -55,7 +55,7 @@ function customUrl($routes, $api = '', $setting = [])
     $routes->connect($api . '/logout', ['controller' => 'Users', 'action' => 'logout'] + $setting);
     $routes->connect($api . '/login', ['controller' => 'Users', 'action' => 'login'] + $setting);
     $routes->connect($api . '/register', ['controller' => 'Users', 'action' => 'register'] + $setting);
-    $routes->connect($api . '/profile', ['controller' => 'Users', 'action' => 'view'] + $setting);
+    $routes->connect($api . '/profile', ['controller' => 'Users', 'action' => 'edit'] + $setting);
 }
 
 Router::scope('/', function (RouteBuilder $routes) use ($settings, $prefix) {

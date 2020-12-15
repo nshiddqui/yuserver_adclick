@@ -14,5 +14,6 @@
         <li class="header">MAIN NAVIGATION</li>
         <li><?= $this->Html->link('<i class="fa fa-dashboard"></i><span>Dashboard</span>', '/dashboard', ['escape' => false]) ?></li>
         <li><?= $this->Html->link('<i class="fa fa-money"></i><span>Start Earning</span>', '/links', ['escape' => false]) ?></li>
+        <li><?= $this->Html->link('<i class="fa fa-tasks"></i><span>Recent Updates</span>', 'https://trello.com/b/3e0qWaU8', ['escape' => false, 'target' => '_BLANK']) ?></li>
     </ul>
 </section>

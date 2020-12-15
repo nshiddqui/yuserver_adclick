@@ -116,7 +116,11 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         if ($this->Auth->user('role') != '1') {
-            throw new UnauthorizedException(__('You are not alowed to access this page'));
+            $id = $this->Auth->user('id');
+        } else {
+            if ($id === null) {
+                $id = $this->Auth->user('id');
+            }
         }
         $user = $this->Users->get($id, [
             'contain' => [],
@@ -126,11 +130,17 @@ class UsersController extends AppController
             if (empty($data['password'])) {
                 unset($data['password']);
             }
+            if (isset($data['email'])) {
+                unset($data['email']);
+            }
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $user = $this->Auth->user();
+                $user['name'] = $data['name'];
+                $this->Auth->setUser($user);
+                $this->Flash->success(__('The profile has been updated.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect($this->referer());
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
