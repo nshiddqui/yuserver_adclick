@@ -140,6 +140,7 @@ class ClickEventsController extends AppController
         ]);
         if ($click_events->count() === 0) {
             $this->Flash->error(__('This adclick is not exists, please use another link.'));
+            $this->Flash->error($id . '-' . $link . '-' . $data['token']);
             return;
         }
         $click_events = $this->ClickEvents->patchEntity($click_events->first(), ['ip_address' => $this->request->clientIp()]);
