@@ -184,10 +184,8 @@ class LinksController extends AppController
                 return $this->redirect($this->referer());
             }
         }
-        var_dump($click_events->id);
-        die;
-        $encoded_id = base64_encode(base64_encode(base64_encode($id)));
-        $encoded_auth_id = base64_encode(base64_encode(base64_encode($auth_user_id)));
-        $this->redirect($link->link . "?token={$token}&link={$encoded_id}&id={$encoded_auth_id}");
+        $link_id = base64_encode(base64_encode(base64_encode($id)));
+        $click_event_id = base64_encode(base64_encode(base64_encode($click_events->id)));
+        $this->redirect($link->link . "?token={$token}&link={$link_id}&id={$click_event_id}");
     }
 }
