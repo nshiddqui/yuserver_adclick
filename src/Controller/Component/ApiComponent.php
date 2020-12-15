@@ -7,6 +7,8 @@ use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Utility\Hash;
 
+header('Access-Control-Allow-Origin: *');
+
 class ApiComponent extends Component
 {
 
@@ -72,8 +74,6 @@ class ApiComponent extends Component
 
         $this->setMetaData();
 
-        $this->setCorsHeaders();
-
         // serialize for json output if not already done
         if (!isset($this->Controller->viewVars['_serialize'])) {
             $this->Controller->set('_serialize', array_keys($this->Controller->viewVars));
@@ -119,9 +119,5 @@ class ApiComponent extends Component
             }
             $this->Controller->set(compact('meta'));
         }
-    }
-    private function setCorsHeaders()
-    {
-        $this->Controller->response->header('Access-Control-Allow-Origin', '*');
     }
 }
