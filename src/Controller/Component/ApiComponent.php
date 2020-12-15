@@ -123,7 +123,5 @@ class ApiComponent extends Component
     private function setCorsHeaders()
     {
         $this->Controller->response->header('Access-Control-Allow-Origin', '*');
-        $this->Controller->response->header('Access-Control-Allow-Methods', '*');
-        $this->Controller->response->header('Access-Control-Max-Age', '172800');
     }
 }
