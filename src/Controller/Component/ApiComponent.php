@@ -122,13 +122,8 @@ class ApiComponent extends Component
     }
     private function setCorsHeaders()
     {
-        $this->Controller->response = $this->Controller->response->cors($this->Controller->request)
-            ->allowOrigin(['*'])
-            ->allowMethods(['*'])
-            ->allowHeaders(['x-xsrf-token', 'Origin', 'Content-Type', 'X-Auth-Token'])
-            ->allowCredentials(['true'])
-            ->exposeHeaders(['Link'])
-            ->maxAge(300)
-            ->build();
+        $this->Controller->response->header('Access-Control-Allow-Origin', '*');
+        $this->Controller->response->header('Access-Control-Allow-Methods', '*');
+        $this->Controller->response->header('Access-Control-Max-Age', '172800');
     }
 }
