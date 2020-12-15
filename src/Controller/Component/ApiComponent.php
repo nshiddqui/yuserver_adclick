@@ -7,8 +7,6 @@ use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Utility\Hash;
 
-header('Access-Control-Allow-Origin: *');
-
 class ApiComponent extends Component
 {
 
